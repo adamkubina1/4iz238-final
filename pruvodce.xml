@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="pruvodce.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="pruvodceHTML.xsl"?>
+
+<průvodce xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:Test.Namespace pruvodce.xsd" 
+    xmlns="urn:Test.Namespace">
+    <názevDíla>Průvodce památkami</názevDíla>
+    <autor>Klára Ťoupalíková</autor>
+    <památky>
+        <!-- Druh památky může být hrad, zámek, jiné -->
+        <památka druh="hrad">
+            <název>Kokořín</název>
+            <postaven upřesnění="rok">1320</postaven>
+            <!-- Oblíbenost může nabývat hodnot 0.0 - 5.0 -->
+            <oblíbenost>4.6</oblíbenost>
+            <!-- Tato památka je populárnější než: -->
+            <památkaPoblíž>Strahovský klášter</památkaPoblíž>
+            <umístění>
+                <kraj>Středočeský kraj</kraj>
+                <mapa href="https://goo.gl/maps/KWWkifuC6A72"/>
+            </umístění>
+            <sloh>Novogotika</sloh>
+            <foto src="obrazky/kokorin.jpg"/>
+            <popis>
+                Hrad Kokořín se vypíná v pískovcových skalách Kokořínského dolu,
+                nad údolím říčky Pšovky. Velmi přitažlivou krajinu Kokořínska tvoří 
+                zajímavé skalní útvary, lesní porost, tůně, vzácné rostliny a živočichové, 
+                divoká kaňonovitá údolí, historické památky, lidové stavby. Krajina byla 
+                v roce 1976 vyhlášena Chráněnou krajinnou oblastí Kokořínsko.
+                Do hradu přijdete po dřevěném mostě. Uvnitř je nádvoří a kousek nad ním 
+                pokladna a suvenýry. Původní stavba vznikla během třináctého století a tvrz 
+                částečně vytesanou do skály obývali tehdejší majitelé panství. Bohužel, 
+                sedmnácté století se stalo dobou, kdy se hrad začal měnit na zříceninu. 
+                Současný vzhled hradu Kokořín pochází z let 1911-1916, kdy došlo k úpravám. 
+                Dominantu tvoří 38 m vysoká věž válvocitého tvaru s kamennou helmou. 
+                Hradní palác se proti původnímu zvýšil o jedno patro, novodobé jsou malby 
+                na stěnách a také vybavení místností.
+            </popis>
+            <zajímavost> Víte, že hrad byl řazen mezi tzv. prokleté hrady, tj. hrady, které se nesměly
+                udržovat, protože jinak by díky své výhodné poloze mohly ohrozit panovnickou moc. </zajímavost>
+            <majitelé>
+                <majitel>Berkové z Dubé</majitel>
+                <majitel>páni z Bezdědic</majitel>
+                <majitel>Klinštejnové</majitel>
+                <majitel>Beřkovští ze Šebířova</majitel>
+                <majitel>Kaplířové ze Sulevic</majitel>
+            </majitelé>
+            <!-- Navštívitelnost hodnoty: ano/ne -->
+            <navštívitelný>ano</navštívitelný>
+            <vstupné měna="Kč">80</vstupné>
+            <!-- Kdo může památku navštívit -->
+            <přístupnost>
+                <kategorie>pěší</kategorie>
+                <kategorie>cyklo</kategorie>
+                <kategorie>auto</kategorie>
+                <kategorie>pejskaři</kategorie>
+            </přístupnost>
+            <služby>
+                <služba>WC</služba>
+                <služba>restaurace</služba>
+                <služba>parkoviště</služba>
+            </služby>
+            <reference>
+                <hodnocení>
+                    <počet_hvězd>5</počet_hvězd>
+                    <datum>2018-11-20</datum>
+                    <komentář>
+                        Je to prostě klasika. A je dobře, že to není další
+                        zřícenina. Ano, rekonstrukce není historicky přesná atd.... 
+                        Ale kde jinde dětem ukázat ten pravý romantický pohádkový hrad?
+                    </komentář>
+                </hodnocení>
+                <hodnocení>
+                    <počet_hvězd>4</počet_hvězd>
+                    <datum>2018-10-23</datum>
+                    <komentář>
+                        Krasny malebny hrad. Je pravda trochu mensi. Za hodinku ani ne mate vse zkouknute(
+                        velka prohlidka, bez cesty od park.). Pokud se extra nekochate a nevyzivate v informacich :)
+                        Na mensi vylet idealni. Parkovani lze platit sms zpravou. 
+                    </komentář>
+                </hodnocení>
+            </reference>
+            <webovky href="http://hradkokorin.eu/"/>
+        </památka>
+        <památka druh="zámek">
+            <název>Státní zámek Lednice</název>
+            <postaven upřesnění="století">16</postaven>
+            <oblíbenost>4.2</oblíbenost>
+            <památkaPoblíž>Státní zámek Dačice</památkaPoblíž>
+            <umístění>
+                <kraj>Jihomoravský kraj</kraj>
+                <mapa href="https://goo.gl/maps/SBrQsWN6tZw"/>
+            </umístění>
+            <sloh>Novogotika</sloh>
+            <foto src="obrazky/zamek_lednice.jpg"/>
+            <popis>
+                Státní zámek Lednice je od roku 1945 majetkem státu, je spravován Ministerstvem 
+                kultury ČR prostřednictvím Národního památkového ústavu Praha, územní odborné 
+                pracoviště v Kroměříži. Zámek patří k nejnavštěvovanějším památkám v naší republice. 
+                Novogotická přestavba v 19. století z něj vytvořila romantické sídlo obklopené jedním 
+                z největších evropských parků (téměř 200 ha), ve kterém návštěvník najde palmový skleník, 
+                benátskou kašnu, římský akvadukt, čínský pavilon, minaret a umělou zříceninu Janův hrad.            
+            </popis>
+            <zajímavost> Díky unikátnímu propojení stavebních památek s okolní člověkem formovanou
+                přírodou byl v roce 1996 celý lednicko-valtický areál zapsán do seznamu světového
+                dědictví UNESCO. </zajímavost>
+            <majitelé>
+                <majitel>Lichtenštejnové</majitel>
+                <majitel>stát</majitel>
+            </majitelé>
+            <!-- Navštívitelnost hodnoty: ano/ne -->
+            <navštívitelný>ano</navštívitelný>
+            <vstupné měna="Kč">190</vstupné>
+            <přístupnost>
+                <kategorie>pěší</kategorie>
+                <kategorie>cyklo</kategorie>
+                <kategorie>auto</kategorie>
+                <kategorie>bezbarierové</kategorie>
+            </přístupnost>
+            <služby>
+                <služba>WC</služba>
+                <služba>restaurace</služba>
+                <služba>parkoviště</služba>
+                <služba>prodejna rostlin</služba>
+                <služba>fotografování</služba>
+            </služby>
+            <reference>
+                <hodnocení>
+                    <počet_hvězd>5</počet_hvězd>
+                    <datum>2018-11-30</datum>
+                    <komentář>
+                        Nádherný zámek a zahrady. Jen je trochu problém v letních měsících 
+                        s parkováním. Ale dá se to pochopit. 
+                    </komentář>
+                </hodnocení>            
+            </reference>
+            <webovky href="https://www.zamek-lednice.com/cs"/>
+        </památka>
+        <památka druh="jiné">
+            <název>Strahovský klášter</název>
+            <postaven upřesnění="rok">1143</postaven>
+            <oblíbenost>4.3</oblíbenost>
+            <památkaPoblíž>Kokořín</památkaPoblíž>
+            <umístění>
+                <kraj>Praha</kraj>
+                <mapa href="https://goo.gl/maps/6FgzovD4gE42"/>
+            </umístění>
+            <sloh>barokní</sloh>
+            <foto src="obrazky/strahovsky_klaster.jpg"/>
+            <popis>Strahovský klášter, plným názvem Královská kanonie premonstrátů na Strahově, je nejstarší premonstrátský 
+                klášter v Čechách, založený roku 1143, a jedna z nejvýznamnějších architektonických památek České republiky. 
+                V klášteře, jehož konvent byl obnoven po roce 1990, sídlí také Památník národního písemnictví, součástí kláštera 
+                je slavná Strahovská knihovna a obrazárna.
+            </popis>
+            <zajímavost>
+                Strahovská knihovna je jednou z nejcennějších a nejlépe zachovaných historických knihoven nejen v Česku. Uchovává 
+                přes 200 tisíc knih, z toho přes 3000 rukopisů a 1500 prvotisků, uložených ve zvláštním depozitáři. Knihovnu tvoří 
+                dva sály, Teologický a větší Filosofický, a spojovací chodby mezi nimi.
+            </zajímavost>
+            <majitelé>
+                <majitel>řád premonstrátů</majitel>
+            </majitelé>
+            <navštívitelný>ano</navštívitelný>
+            <vstupné měna="Kč">120</vstupné>
+            <přístupnost>
+                <kategorie>pěší</kategorie>
+                <kategorie>auto</kategorie>
+            </přístupnost>
+            <služby>
+                <služba>ubytování</služba>
+                <služba>WC</služba>
+                <služba>restaurace</služba>
+                <služba>pivovar</služba>
+            </služby>
+            <reference>
+                <hodnocení>
+                    <počet_hvězd>5</počet_hvězd>
+                    <datum>2018-12-22</datum>
+                    <komentář>
+                        Jeden ze základních pilířů české vzdělanosti. Díky šikovnosti premonstrátů nebyl dokonce zrušen ani 
+                        za Josefa ll. Knihovna v Teologickém i Filozofické sále je fascinující. Takových prostor u nás mnoho 
+                        není (napadá mě broumovská klášterní knihovna). Při běžné prohlídce Vás do sálů knihovny nepustí, 
+                        můžete jen nahlížet od dveří. My ovšem měli objednanou privátní prohlídku celé knihovny. Moc pěkné 
+                        ale nekřesťansky drahé. Nicméně naším německým přátelům se moc líbilo. Pro vyjímečnou příležitost to stojí za to.
+                        Pro získání běžného přehledu postačuje základní prohlídka. 
+                    </komentář>
+                </hodnocení>
+                <hodnocení>
+                    <počet_hvězd>4</počet_hvězd>
+                    <datum>2019-01-04</datum>
+                    <komentář>
+                        Awesome monastery. Go find the underground cavern bar. Blueberry beer is excellent
+                    </komentář>
+                </hodnocení>
+            </reference>
+            <webovky href="https://www.strahovskyklaster.cz/"/>
+        </památka>
+        <památka druh="zámek">
+            <název>Státní zámek Dačice</název>
+            <postaven upřesnění="rok">1591</postaven>
+            <oblíbenost>4.6</oblíbenost>
+            <památkaPoblíž>Státní zámek Lednice</památkaPoblíž>
+            <umístění>
+                <kraj>Jihočeský kraj</kraj>
+                <mapa href="https://goo.gl/maps/m49UJ7JxbFE2"/>
+            </umístění>
+            <sloh>empír</sloh>
+            <foto src="obrazky/dacice.jpg"/>
+            <popis>
+                Nový dačický zámek stojí na křižovatce Havlíčkova náměstí a Hradecké ulice v Dačicích. Dnes se v jeho prostorách
+                nachází Městské muzeum a galerie Dačice. Je památkově chráněn, v roce 2001 byl prohlášen národní kulturní
+                památkou. Je ve vlastnictví státu (správu zajišťuje Národní památkový ústav) a je přístupný veřejnosti.
+            </popis>
+            <zajímavost>
+                Kromě možnosti navštívit prohlídkovou trasu nabízí dačický zámek i výstavy a různé jiné kulturní akce, jako je 
+                Barokní jarmark či Hradozámecká noc.
+            </zajímavost>
+            <majitelé>
+                <majitel>Krajířové z Krajku</majitel>
+                <majitel>Vilém Dubský z Třebomyslic</majitel>
+                <majitel>Berkové z Dubé a Lipé</majitel>
+                <majitel>Fürstenberkové</majitel>
+                <majitel>Václav Albrecht hr. z  Vrbna a Bruntálu</majitel>
+                <majitel>Osteinové</majitel>
+                <majitel>Dalbergové</majitel>
+                <majitel>Franz Karl zu Salm-Salm</majitel>
+                <majitel>stát</majitel>
+            </majitelé>
+            <navštívitelný>ano</navštívitelný>
+            <vstupné měna="Kč">100</vstupné>
+            <přístupnost>
+                <kategorie>pěší</kategorie>
+                <kategorie>cyklo</kategorie>
+                <kategorie>auto</kategorie>
+                <kategorie>pejskaři</kategorie>
+                <kategorie>bezbarierové</kategorie>
+            </přístupnost>
+            <služby>
+                    <služba>WC</služba>
+                    <služba>restaurace</služba>
+                    <služba>parkoviště</služba>
+            </služby>
+            <reference>
+                <hodnocení>
+                    <počet_hvězd>4</počet_hvězd>
+                    <datum>2018-12-15</datum>
+                    <komentář>
+                        Něco mi říká, že expozici cukru jsem neviděl naposledy :-) Aby ne, když je má žena a její přátelé z Klubu sběratelů baleného cukru, 
+                        její součástí ;-) Druhá výstava, 100 let Republiky v Dačicích je taky fajn. Na koncert Zelenáčů bych rád zašel. Jen kolem pokladny 
+                        by mohlo být víc místa. Když se tam nahrne 10 lidí, tak se tam nedá ani otočit.
+                    </komentář>
+                </hodnocení>
+            </reference>
+            <webovky href="https://www.zamek-dacice.cz/cs"/>
+        </památka>
+    </památky>
+</průvodce>
