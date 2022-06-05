@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://docbook.org/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://docbook.org/xml/5.1/sch/docbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:lang="en">
+    <info>
+        <title>Final paper documentation</title>
+        <author>
+            <personname><firstname>Adam</firstname><surname>Kubina</surname></personname>
+            <address><city>Prague</city>            </address>
+            <email>kuba10@vse.cz</email>
+        </author>
+    </info>
+    
+    <preface>
+        <title>Preface</title>
+        <para>In this documentation, I am going to introduce the reader to the basic structure of my final paper for 4iz238 and explain basic technologies I have used in it.</para>
+    </preface>
+    
+    <chapter>
+        <title>XML</title>
+        <para>Description of XML documents purpose and meaning of its elements and atributes.</para>
+        <sect1>
+            <title>Purpose</title>
+            <para>Purpose of this document is to capture save of an turn based strategy game.</para>
+        </sect1>
+        <sect1>
+            <title>Elements and atributes</title>
+            <para>
+                <variablelist>
+                    <varlistentry>
+                        <term>game</term>
+                        <listitem>
+                            <para>Root element holding information about the game</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>playerOnTurn</term>
+                        <listitem>
+                            <para>Holds name and id of player on turn</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>map</term>
+                        <listitem>
+                            <para>Name of the current map</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>player</term>
+                        <listitem>
+                            <para>Holds information about the player and his game resources</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>@id</term>
+                        <listitem>
+                            <para>Nine character code serving as unique identificator for entity</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>actionQueue</term>
+                        <listitem>
+                            <para>Holds queue of actions that building or entity is going to perform</para>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
+            </para>
+        </sect1>
+    </chapter>
+    
+    <chapter>
+        <title>Schemas</title>
+        <para>Schemas are used as both functional and reference validity check for my example document. Most of the controls are being done in W3C XML Schema.</para>
+        <sect1>
+            <title>W3C XML Schema</title>
+            <para></para>
+        </sect1>
+        <sect1>
+            <title>Schematron</title>
+            <para></para>
+        </sect1>
+    </chapter>
+    
+    <chapter>
+        <title>Transformations</title>
+        <sect1>
+            <title>HTML transformation</title>
+            <para></para>
+        </sect1>
+        <sect1>
+            <title>PDF transformation</title>
+            <para></para>
+        </sect1>
+    </chapter>
+    
+</book>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="gameSave-schematron.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<game
+    xmlns="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    >
+    <map>Map 1</map>
+    <playerOnTurn id="abcdef123">
+        <name>Player 1</name>
+    </playerOnTurn>
+    
+    
+    <players>      
+        <player id="abcdef123">
+            <name>Player 1</name>
+            
+            <commodities>
+                <commodity form="gold" amount="100"/>                  
+                <commodity form="wheat" amount="0"/>                
+            </commodities>
+            
+            <units>
+                <unit id="ghjklm123" category="villager">
+                    <hp>100</hp>
+                    <actionReach>10</actionReach>
+                    <damage>0</damage>
+                    <position x="0" y="0"/>
+                    
+                    <actionQueue>
+                        <action type="move" repeat="false">
+                            <turnsToComplete>3</turnsToComplete> 
+                            <position x="12" y="-100"/>
+                        </action>
+                        <action type="mine" repeat="true">
+                            <turnsToComplete>1</turnsToComplete>
+                            <target id="cvbnm1234"/>
+                        </action>
+                    </actionQueue>
+                </unit>
+                <unit id="ghjklm124" category="soldier">
+                    <hp>200</hp>
+                    <actionReach>20</actionReach>
+                    <damage>10</damage>
+                    <position x="100" y="100"/>           
+                    <actionQueue>
+                        <action type="move" repeat="false">
+                            <turnsToComplete>5</turnsToComplete>
+                            <position x="10" y="100"/>
+                        </action>
+                        <action type="attack" repeat="false">
+                            <turnsToComplete>1</turnsToComplete>
+                            <target id="abcdef321"/>
+                        </action>
+                    </actionQueue>
+                </unit>       
+            </units>   
+            <buildings>
+                <building id="123456789" category="townCenter">
+                    <hp>500</hp>
+                    <position x="10" y="10"/>
+                    <actionQueue>
+                        <action type="spawn" repeat="false">
+                            <unit id="987654321" category="soldier">
+                                <turnsToComplete>2</turnsToComplete>
+                                <hp>200</hp>
+                                <actionReach>20</actionReach>
+                                <damage>10</damage>
+                                <position x="10" y="10"/>
+                            </unit>
+                            <turnsToComplete>3</turnsToComplete>
+                        </action>
+                        <action type="spawn" repeat="false">
+                            <unit id="987654329" category="villager">
+                                <turnsToComplete>2</turnsToComplete>
+                                <hp>100</hp>
+                                <actionReach>10</actionReach>
+                                <position x="10" y="10"/>
+                            </unit>
+                            <turnsToComplete>1</turnsToComplete>
+                        </action>
+                        <action type="produce" repeat="true">
+                            <turnsToComplete>1</turnsToComplete>
+                            <commodity form="gold" amount="10"/>                                                            
+                        </action>
+                    </actionQueue>
+                </building>
+            </buildings>
+        </player>
+        
+        <player id="djlaskdfjl">
+            <name>Player 2</name>
+            <commodities>
+                <commodity form="gold" amount="0"/>                
+                <commodity form="wheat" amount="100"/>                
+            </commodities>
+            <units></units>
+            <buildings></buildings>
+        </player>
+        
+    </players>
+</game>
+

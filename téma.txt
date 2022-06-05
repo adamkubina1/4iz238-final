@@ -1,2 +1,0 @@
-Jako téma semestrální práce jsem si vybrala katalog hradù a zámkù ÈR.
-Každá památka má v sobì informace o poloze, popis, hodnocení nebo tøeba odkaz na webovou stránku. Nìkteré položky (napø. název nebo foto) budou povinné. Jiné informace (napø. údálosti) povinnost nemají. U hodnocení je možno zadávat èísla od 0 do 5 vèetnì desetinných èísel.
