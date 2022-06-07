@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="gameSave-schematron.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <game
     xmlns="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
     >
@@ -60,20 +59,21 @@
                     <actionQueue>
                         <action type="spawn" repeat="false">
                             <unit id="987654321" category="soldier">
-                                <turnsToComplete>2</turnsToComplete>
                                 <hp>200</hp>
                                 <actionReach>20</actionReach>
                                 <damage>10</damage>
                                 <position x="10" y="10"/>
+                                <actionQueue></actionQueue>
                             </unit>
                             <turnsToComplete>3</turnsToComplete>
                         </action>
                         <action type="spawn" repeat="false">
                             <unit id="987654329" category="villager">
-                                <turnsToComplete>2</turnsToComplete>
                                 <hp>100</hp>
                                 <actionReach>10</actionReach>
+                                <damage>0</damage>
                                 <position x="10" y="10"/>
+                                <actionQueue></actionQueue>
                             </unit>
                             <turnsToComplete>1</turnsToComplete>
                         </action>
@@ -86,7 +86,7 @@
             </buildings>
         </player>
         
-        <player id="djlaskdfjl">
+        <player id="djlaskdfl">
             <name>Player 2</name>
             <commodities>
                 <commodity form="gold" amount="0"/>                

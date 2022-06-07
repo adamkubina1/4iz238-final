@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    xmlns="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    xmlns:g="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    elementFormDefault="qualified">
+    
+    <xs:element name="game" type="gameType">
+        <xs:annotation>
+            <xs:documentation>Root tag of the game save.</xs:documentation>
+        </xs:annotation>
+        
+        <xs:key name="playerNameOnTurn">
+            <xs:selector xpath="g:players/g:player/g:name"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:key>
+        
+        <xs:keyref refer="playerNameOnTurn" name="playerNameOnTurnRef">
+            <xs:selector xpath="g:playerOnTurn/g:name"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:keyref>
+        
+        <xs:key name="playerIdOnTurn">
+            <xs:selector xpath="g:players/g:player"></xs:selector>
+            <xs:field xpath="@id"></xs:field>
+        </xs:key>
+        
+        <xs:keyref refer="playerIdOnTurn" name="playerIdOnTurnRef">
+            <xs:selector xpath="g:playerOnTurn"></xs:selector>
+            <xs:field xpath="@id"></xs:field>
+        </xs:keyref>
+        
+    </xs:element>
+    
+    <xs:complexType name="gameType">
+        <xs:sequence>
+            <xs:element name="map" type="xs:string" maxOccurs="1" minOccurs="1"/>
+            <xs:element name="playerOnTurn" type="playerOnTurnType" maxOccurs="1" minOccurs="1"/>
+            <xs:element name="players" type="playersType" maxOccurs="1" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="playersType">
+        <xs:sequence>
+            <xs:element name="player" type="playerType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="playerType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="commodities" type="commoditiesType"/>
+            <xs:element name="units" type="unitsType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="buildings" type="buildingsType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>    
+        <xs:attribute name="id" type="idType"/>
+    </xs:complexType>
+    
+    <xs:complexType name="playerOnTurnType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>        
+        </xs:sequence>
+        <xs:attribute name="id" type="idType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="idType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".{9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="commoditiesType">
+        <xs:sequence>
+            <xs:element name="commodity" type="commodityType" maxOccurs="2" minOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="commodityType">
+        <xs:attribute name="form" type="commodityFormType"/>
+        <xs:attribute name="amount" type="commodityAmountType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="commodityFormType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="gold"/>
+            <xs:enumeration value="wheat"/>        
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="commodityAmountType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="unitsType">
+        <xs:sequence>
+            <xs:element name="unit" type="unitType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+        
+    <xs:complexType name="unitType">
+        <xs:sequence>
+            <xs:element name="hp" type="hpType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="actionReach" type="actionReachType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="damage" type="damageType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="position" type="positionType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="actionQueue" type="unitActionQueueType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="idType"/>
+        <xs:attribute name="category" type="categoryUnitType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="hpType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="actionReachType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="damageType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="positionType">
+        <xs:attribute name="x" type="xs:int"/>
+        <xs:attribute name="y" type="xs:int"/>
+    </xs:complexType>
+    
+    <xs:complexType name="unitActionQueueType">
+        <xs:sequence>
+            <xs:element name="action" type="unitActionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="unitActionType">
+        <xs:sequence>
+            <xs:element name="turnsToComplete" type="turnsToCompleteType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="position" type="positionType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="target" type="targetType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="unitActionTypeType"/>
+        <xs:attribute name="repeat" type="repeatType"/>
+    </xs:complexType>
+    
+    <xs:complexType name="targetType">
+        <xs:attribute name="id" type="idType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="turnsToCompleteType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="categoryUnitType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="villager"/>
+            <xs:enumeration value="soldier"/>        
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="unitActionTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="mine"/>
+            <xs:enumeration value="attack"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="repeatType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="buildingsType">
+        <xs:sequence>
+            <xs:element name="building" type="buildingType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="buildingType">
+        <xs:sequence>
+            <xs:element name="hp" type="hpType"/>
+            <xs:element name="position" type="positionType"/>
+            <xs:element name="actionQueue" type="buildingActionQueueType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="idType"/>
+        <xs:attribute name="category" type="categoryBuildingType"/>
+    </xs:complexType>
+
+    <xs:simpleType name="categoryBuildingType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="townCenter"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="buildingActionQueueType">
+        <xs:sequence>
+            <xs:element name="action" type="buildingActionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="buildingActionType">
+        <xs:sequence>
+            <xs:element name="unit" type="unitType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="turnsToComplete" type="turnsToCompleteType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="commodity" type="commodityType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="buildingActionTypeType"/>
+        <xs:attribute name="repeat" type="repeatType"/>
+    </xs:complexType>
+
+    <xs:simpleType name="buildingActionTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="spawn"/>
+            <xs:enumeration value="produce"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
