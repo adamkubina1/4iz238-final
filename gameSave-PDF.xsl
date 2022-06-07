@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:g="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    xmlns:g="http://www.vse.cz/4iz238/sem/kuba10/XML/gameSave"
     xmlns:fo="http://www.w3.org/1999/XSL/Format" exclude-result-prefixes="xs g fo" version="2.0">
 
     <xsl:output method="xml" encoding="UTF-8"/>
@@ -20,8 +20,8 @@
             <fo:page-sequence master-reference="A4">
 
                 <fo:static-content flow-name="xsl-region-before" font-size="10pt">
-                    <fo:block text-align="right" margin-top="-20mm">
-                        <xsl:text>Representation of game save</xsl:text>
+                    <fo:block text-align="center" margin-top="-20mm">
+                        <xsl:text>Game save</xsl:text>
                     </fo:block>
                 </fo:static-content>
 
@@ -42,11 +42,15 @@
     </xsl:template>
 
     <xsl:template match="g:game">
-        <fo:block font-size="200%">Game save</fo:block>
+        <fo:block font-size="200%">Game save information</fo:block>
 
         <fo:block font-size="150%" margin-top="10mm">
             <fo:inline font-weight="bold">Map: </fo:inline>
             <xsl:value-of select="g:map"/>
+        </fo:block>
+        
+        <fo:block>
+            <fo:external-graphic src="url('../imgs/{g:map}.jpg')"/>
         </fo:block>
 
         <fo:block font-size="150%">
@@ -84,7 +88,7 @@
     <xsl:template match="g:players" mode="links">
         <xsl:for-each select="g:player">
             <fo:block>
-                <fo:basic-link internal-destination="{generate-id(.)}">
+                <fo:basic-link internal-destination="{generate-id(.)}" color="blue">
                     <xsl:value-of select="g:name"/>
                 </fo:basic-link>
             </fo:block>
@@ -153,7 +157,7 @@
                         <fo:table-cell border="1px" border-color="#076787" border-style="solid" display-align="center" text-align="center">
                             <fo:block-container>
                                 <fo:block>
-                                    <fo:external-graphic src="url('imgs/{@category}.jpg')"/>
+                                    <fo:external-graphic src="url('../imgs/{@category}.jpg')"/>
                                 </fo:block>
                             </fo:block-container>
                         </fo:table-cell>
@@ -241,7 +245,7 @@
                         <fo:table-cell border="1px" border-color="#076787" border-style="solid" display-align="center" text-align="center">
                             <fo:block-container>
                                 <fo:block>
-                                    <fo:external-graphic src="url('imgs/{@category}.jpg')"/>
+                                    <fo:external-graphic src="url('../imgs/{@category}.jpg')"/>
                                 </fo:block>
                             </fo:block-container>
                         </fo:table-cell>
