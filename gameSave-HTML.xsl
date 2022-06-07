@@ -37,6 +37,7 @@
     <xsl:template match="g:game">
         <h1>Basic information</h1>
         <h2>Map: <xsl:value-of select="./g:map"/></h2>
+        <img src="../imgs/{./g:map}.webp"/>
         <h2>Player on turn: <xsl:apply-templates select="./g:playerOnTurn" mode="name"/></h2>
         <div>
             <h2>Player information</h2>
