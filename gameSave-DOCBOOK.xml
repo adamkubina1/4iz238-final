@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://docbook.org/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://docbook.org/xml/5.1/sch/docbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:lang="en">
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:lang="cs">
     <info>
         <title>Final paper documentation</title>
         <author>
@@ -12,55 +12,55 @@
     </info>
     
     <preface>
-        <title>Preface</title>
-        <para>In this documentation, I am going to introduce the reader to the basic structure of my final paper for 4iz238 and explain basic technologies I have used in it.</para>
+        <title>Úvod</title>
+        <para>V této dokumentaci popíši moji semestralni práci a technologii v ní využité.</para>
     </preface>
     
     <chapter>
         <title>XML</title>
-        <para>Description of XML documents purpose and meaning of its elements and atributes.</para>
+        <para>Popis významu <indexterm><primary>XML</primary></indexterm> dokumentu a jeho elementu a atributů.</para>
         <sect1>
-            <title>Purpose</title>
-            <para>Purpose of this document is to capture save of an turn based strategy game.</para>
+            <title>Význam</title>
+            <para>Význam tohoto dokumentu spočívá v uložení tahové strategické hry.</para>
         </sect1>
         <sect1>
-            <title>Elements and atributes</title>
+            <title>Elements a atributy</title>
             <para>
                 <variablelist>
                     <varlistentry>
                         <term>game</term>
                         <listitem>
-                            <para>Root element holding information about the game</para>
+                            <para>Root element drzici zakladni informace o hre</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
                         <term>playerOnTurn</term>
                         <listitem>
-                            <para>Holds name and id of player on turn</para>
+                            <para>Drží jméno a id hráče, který je na tahu</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
                         <term>map</term>
                         <listitem>
-                            <para>Name of the current map</para>
+                            <para>Jméno aktualní mapy</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
                         <term>player</term>
                         <listitem>
-                            <para>Holds information about the player and his game resources</para>
+                            <para>Drží informace o hráči ve hře a jeho zdrojich</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
                         <term>@id</term>
                         <listitem>
-                            <para>Nine character code serving as unique identificator for entity</para>
+                            <para>Devíti charakterový kod, sloužící jako identifikátor pro herní entity</para>
                         </listitem>
                     </varlistentry>
                     <varlistentry>
                         <term>actionQueue</term>
                         <listitem>
-                            <para>Holds queue of actions that building or entity is going to perform</para>
+                            <para>Drží frontu akcí, které se chystá daná budova nebo postava vykonat</para>
                         </listitem>
                     </varlistentry>
                 </variablelist>
@@ -70,27 +70,142 @@
     
     <chapter>
         <title>Schemas</title>
-        <para>Schemas are used as both functional and reference validity check for my example document. Most of the controls are being done in W3C XML Schema.</para>
+        <para>Schemata využívám pro funkční i referenční kontrolu <indexterm><primary>XML</primary></indexterm> dokumentu. Většina kontrol je naimplementována v <indexterm><primary>W3C XML schéma</primary></indexterm>.</para>
         <sect1>
             <title>W3C XML Schema</title>
-            <para></para>
+            <figure>
+                <title>Validace referencni integrity v root tagu</title>
+                <programlisting language="xml">
+&lt;xs:element name="game" type="gameType">
+    &lt;xs:annotation>
+        &lt;xs:documentation>Root tag of the game save.&lt;/xs:documentation>
+    &lt;/xs:annotation>
+    
+    &lt;xs:key name="playerNameOnTurn">
+        &lt;xs:selector xpath="g:players/g:player/g:name">&lt;/xs:selector>
+        &lt;xs:field xpath=".">&lt;/xs:field>
+    &lt;/xs:key>
+    
+    &lt;xs:keyref refer="playerNameOnTurn" name="playerNameOnTurnRef">
+        &lt;xs:selector xpath="g:playerOnTurn/g:name">&lt;/xs:selector>
+        &lt;xs:field xpath=".">&lt;/xs:field>
+    &lt;/xs:keyref>
+    
+    &lt;xs:key name="playerIdOnTurn">
+        &lt;xs:selector xpath="g:players/g:player">&lt;/xs:selector>
+        &lt;xs:field xpath="@id">&lt;/xs:field>
+    &lt;/xs:key>
+    
+    &lt;xs:keyref refer="playerIdOnTurn" name="playerIdOnTurnRef">
+        &lt;xs:selector xpath="g:playerOnTurn">&lt;/xs:selector>
+        &lt;xs:field xpath="@id">&lt;/xs:field>
+    &lt;/xs:keyref>
+    
+&lt;/xs:element>
+            </programlisting>
+            </figure>
+            <para>Tato ukázka kodu <indexterm><primary>W3C XML schéma</primary></indexterm> zajistuje referencni integritu pro element playerOnTurn, tak aby jmeno i id vzdy existovalo.</para>
         </sect1>
         <sect1>
             <title>Schematron</title>
-            <para></para>
+            <figure>
+                <title>Kontrola rozsahu</title>
+                <programlisting language="xml">
+&lt;sch:pattern>
+    &lt;sch:title>Limits on position coordinates&lt;/sch:title>
+    &lt;sch:rule context="g:position">           
+        &lt;sch:assert test="@x &lt; 999 and @x &gt; -999">
+            X coordinate must be in -999 to 999 range
+        &lt;/sch:assert>
+        &lt;sch:assert test="@y &lt; 999 and @x &gt; -999">
+            Y coordinate must be in -999 to 999 range
+        &lt;/sch:assert>
+    &lt;/sch:rule>
+&lt;/sch:pattern>
+                </programlisting>
+                <para>Tato ukazka kodu ze <indexterm><primary>Schematronu</primary></indexterm> zajistuje ze atributy @x a @y u elementu position jsou v rozsahu -999 a 999</para>
+            </figure>
         </sect1>
     </chapter>
     
     <chapter>
-        <title>Transformations</title>
+        <title>XSLT transformace</title>
         <sect1>
-            <title>HTML transformation</title>
-            <para></para>
+            <title>HTML XSLT transformace</title>
+            <para>Transformace <indexterm><primary>XML</primary></indexterm> dokumentu do formatu <indexterm><primary>HTML</primary></indexterm></para>
+            <figure>
+                <title>Schema XSLT transformace</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="https://www.oxygenxml.com/img/ls_xslt_transform.png" format="png" scalefit="1" width="100%" contentdepth="100%" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <figure>
+                <title>Ukazka HTML transformace</title>
+                <programlisting language="xml">
+&lt;xsl:template match="g:actionQueue" mode="unitDisplayAll">
+    &lt;xsl:for-each select="g:action">
+        &lt;xsl:value-of select="position()" />&lt;xsl:text>. &lt;/xsl:text>
+        &lt;xsl:choose>
+            &lt;xsl:when test="@type = 'move'">
+                &lt;xsl:text>Moving to x = &lt;/xsl:text> 
+                &lt;xsl:value-of select="g:position/@x"/> 
+                &lt;xsl:text> y = &lt;/xsl:text> 
+                &lt;xsl:value-of select="g:position/@y"/>
+            &lt;/xsl:when>
+            &lt;xsl:when test="@type = 'mine'">
+                &lt;xsl:text>Mining&lt;/xsl:text>
+            &lt;/xsl:when>
+            &lt;xsl:when test="@type = 'attack'">
+                &lt;xsl:text>Attacking&lt;/xsl:text>
+            &lt;/xsl:when>
+        &lt;/xsl:choose>
+        &lt;xsl:if test="@repeat = 'true'">
+            , repeating this action
+        &lt;/xsl:if>
+        &lt;xsl:text>, turns to complete &lt;/xsl:text> 
+        &lt;xsl:value-of select="g:turnsToComplete"/>
+        &lt;br/>
+    &lt;/xsl:for-each>
+&lt;/xsl:template>
+                </programlisting>
+            </figure>
+            <para>Tento template transformace slouzi pro vypisovani akci ve fronte akci jednotek.</para>
         </sect1>
         <sect1>
-            <title>PDF transformation</title>
-            <para></para>
+            <title>PDF transformace</title>
+            <para>Transformace <indexterm><primary>XML</primary></indexterm> dokumentu do formatu <indexterm><primary>PDF</primary></indexterm>.</para>
+            <figure>
+                <title>Ukazka PDF transformace</title>
+                <programlisting language="xml">
+&lt;xsl:template match="g:players" mode="page">
+    &lt;xsl:for-each select="g:player">
+        &lt;fo:block id="{generate-id(.)}" break-before="page" font-size="200%">
+            &lt;xsl:value-of select="g:name"/>
+        &lt;/fo:block>
+        &lt;fo:block margin-top="20mm" >
+            &lt;fo:inline font-size="150%" font-weight="bold"
+                >Commodities&lt;/fo:inline>
+            &lt;xsl:apply-templates select="g:commodities" mode="displayAll"/>
+        &lt;/fo:block>
+        &lt;fo:block margin-top="20mm">
+            &lt;fo:inline font-size="150%" font-weight="bold">
+                Units
+            &lt;/fo:inline>
+            &lt;xsl:apply-templates select="g:units" mode="displayAll"/>
+        &lt;/fo:block>
+        &lt;fo:block margin-top="20mm">
+            &lt;fo:inline font-size="150%" font-weight="bold"
+                >Buildings&lt;/fo:inline>
+            &lt;xsl:apply-templates select="g:buildings" mode="displayAll"/>
+        &lt;/fo:block>
+    &lt;/xsl:for-each>
+&lt;/xsl:template>
+                </programlisting>
+                <para>Template v ukazce slouzi k vytvoreni zakladu <indexterm><primary>PDF</primary></indexterm> stranky popisujici informace o konkretnim hraci</para>
+            </figure>
         </sect1>
     </chapter>
-    
+    <index></index>
 </book>
