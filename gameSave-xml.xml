@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <game
-    xmlns="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    xmlns="http://www.vse.cz/4iz238/sem/kuba10/XML/gameSave"
     >
     <map>Map 1</map>
     <playerOnTurn id="abcdef123">
@@ -27,7 +27,7 @@
                     <actionQueue>
                         <action type="move" repeat="false">
                             <turnsToComplete>3</turnsToComplete> 
-                            <position x="12" y="-100"/>
+                            <position x="120" y="-100"/>
                         </action>
                         <action type="mine" repeat="true">
                             <turnsToComplete>1</turnsToComplete>
@@ -86,7 +86,7 @@
             </buildings>
         </player>
         
-        <player id="djlaskdfl">
+        <player id="abcdef123">
             <name>Player 2</name>
             <commodities>
                 <commodity form="gold" amount="0"/>                
