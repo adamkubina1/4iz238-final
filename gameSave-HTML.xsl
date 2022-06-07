@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:g="http://www.vse.cz/4iz238/sem/kuba10/gameSave"
+    xmlns:g="http://www.vse.cz/4iz238/sem/kuba10/XML/gameSave"
     exclude-result-prefixes="xs g"
     version="2.0">
     
     <xsl:output method="html" version="5"/>
+    
+    <!-- Default background is greyish, to change it use hex, rgb or name of color as this parametr -->
+    <xsl:param name="background" select="'#F5F5F5'"/>
+    
+    <xsl:variable name="header">
+        <header>
+            <p>Game save</p>
+            <nav>
+                <a href="gameSave.html">Main page</a>
+            </nav>       
+        </header>
+    </xsl:variable>
     
     <!-- BASE -->
     <xsl:template match="/">
         <html lang="en">
             <head>
                 <title>Game Save</title>
-                <link rel="stylesheet" href="style.css" type="text/css"/>
+                <link rel="stylesheet" href="../style.css" type="text/css"/>
             </head>
-            <body>
+            <body style="background-color: {$background};">
+                <xsl:copy-of select="$header" />
                 <xsl:apply-templates/> 
             </body>
         </html>
@@ -22,11 +35,11 @@
     
     <!-- MAIN PAGE -->
     <xsl:template match="g:game">
-        <h1>Game save file</h1>
+        <h1>Basic information</h1>
         <h2>Map: <xsl:value-of select="./g:map"/></h2>
         <h2>Player on turn: <xsl:apply-templates select="./g:playerOnTurn" mode="name"/></h2>
         <div>
-            <h2>Players:</h2>
+            <h2>Player information</h2>
             <xsl:apply-templates select="g:players" mode="menu"/>
         </div>
 
@@ -40,9 +53,10 @@
             <html lang="en">
                 <head>
                     <title><xsl:value-of select="g:name"/></title>
-                    <link rel="stylesheet" href="style.css" type="text/css"/>
+                    <link rel="stylesheet" href="../style.css" type="text/css"/>
                 </head>
-                <body>
+                <body style="background-color: {$background};">
+                    <xsl:copy-of select="$header" />
                     <h1><xsl:value-of select="g:name"/></h1>
                     <h2>Commodities:</h2>
                     <xsl:apply-templates select="g:commodities" mode="displayAll"/>
@@ -50,8 +64,6 @@
                     <xsl:apply-templates select="g:units" mode="displayAll"/>                  
                     <h2>Buildings</h2>
                     <xsl:apply-templates select="g:buildings" mode="displayAll"/>
-                    
-                    <a style="margin-top: 100px;" href="gameSave.html">Go back to main page</a>
                 </body>
             </html>
         </xsl:result-document>
@@ -90,7 +102,7 @@
             </tr>
             <xsl:for-each select="g:unit">
                 <tr>
-                    <th><img src="imgs/{@category}.webp" alt="unit"></img></th>
+                    <th><img src="../imgs/{@category}.webp" alt="unit"></img></th>
                     <th><xsl:value-of select="@category"/></th>
                     <th><xsl:value-of select="g:hp"/></th>
                     <th><xsl:value-of select="g:actionReach"/></th>
@@ -113,7 +125,7 @@
             </tr>
             <xsl:for-each select="g:building">
                 <tr>
-                    <th><img src="imgs/{@category}.webp" alt="building"></img></th>
+                    <th><img src="../imgs/{@category}.webp" alt="building"></img></th>
                     <th><xsl:value-of select="@category"/></th>
                     <th><xsl:value-of select="g:hp"/></th>
                     <th>x = <xsl:value-of select="g:position/@x"/>, y = <xsl:value-of select="g:position/@y"/></th>

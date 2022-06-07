@@ -1,0 +1,64 @@
+<!DOCTYPE HTML><html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Player 1</title>
+      <link rel="stylesheet" href="../style.css" type="text/css">
+   </head>
+   <body style="background-color: #F5F5F5;">
+      <header>
+         <p>Game save</p>
+         <nav><a href="gameSave.html">Main page</a></nav>
+      </header>
+      <h1>Player 1</h1>
+      <h2>Commodities:</h2>
+      <p><span style="font-weight: bold;">gold</span> : 100</p>
+      <p><span style="font-weight: bold;">wheat</span> : 0</p>
+      <h2>Units</h2>
+      <table>
+         <tr style="font-size: 120%; margin-bottom: 10px; margin-top: 10px;">
+            <th>Unit</th>
+            <th>Name</th>
+            <th>HP</th>
+            <th>Action reach</th>
+            <th>Damage</th>
+            <th>Position</th>
+            <th>Action Queue</th>
+         </tr>
+         <tr>
+            <th><img src="../imgs/villager.webp" alt="unit"></th>
+            <th>villager</th>
+            <th>100</th>
+            <th>10</th>
+            <th>0</th>
+            <th>x = 0, y = 0</th>
+            <th>1. Moving to x = 120 y = -100, turns to complete 3<br>2. Mining, repeating this action, turns to complete 1<br></th>
+         </tr>
+         <tr>
+            <th><img src="../imgs/soldier.webp" alt="unit"></th>
+            <th>soldier</th>
+            <th>200</th>
+            <th>20</th>
+            <th>10</th>
+            <th>x = 100, y = 100</th>
+            <th>1. Moving to x = 10 y = 100, turns to complete 5<br>2. Attacking, turns to complete 1<br></th>
+         </tr>
+      </table>
+      <h2>Buildings</h2>
+      <table>
+         <tr style="font-size: 120%; margin-bottom: 10px; margin-top: 10px;">
+            <th>Unit</th>
+            <th>Name</th>
+            <th>HP</th>
+            <th>Position</th>
+            <th>Action Queue</th>
+         </tr>
+         <tr>
+            <th><img src="../imgs/townCenter.webp" alt="building"></th>
+            <th>townCenter</th>
+            <th>500</th>
+            <th>x = 10, y = 10</th>
+            <th>1. Spawning a soldier, turns to complete 3<br>2. Spawning a villager, turns to complete 1<br>3. Producing 10 of gold, repeating this action, turns to complete 1<br></th>
+         </tr>
+      </table>
+   </body>
+</html>

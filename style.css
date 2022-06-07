@@ -9,3 +9,22 @@ table {
     border-spacing: 10px;
     font-weight: normal;
 }
+
+table, tr, th {
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 120%;
+    border: 1px solid blue;
+    text-align: center;
+}
+header nav {
+    margin-left: 20px;
+}
+
