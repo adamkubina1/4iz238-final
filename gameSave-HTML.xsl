@@ -12,7 +12,7 @@
     
     <xsl:variable name="header">
         <header>
-            <p>Game save</p>
+            <h1>Game save</h1>
             <nav>
                 <a href="gameSave.html">Main page</a>
             </nav>       
@@ -35,12 +35,12 @@
     
     <!-- MAIN PAGE -->
     <xsl:template match="g:game">
-        <h1>Basic information</h1>
-        <h2>Map: <xsl:value-of select="./g:map"/></h2>
+        <h2>Basic information</h2>
+        <h3>Map: <xsl:value-of select="./g:map"/></h3>
         <img src="../imgs/{./g:map}.webp"/>
-        <h2>Player on turn: <xsl:apply-templates select="./g:playerOnTurn" mode="name"/></h2>
+        <h3>Player on turn: <xsl:apply-templates select="./g:playerOnTurn" mode="name"/></h3>
         <div>
-            <h2>Player information</h2>
+            <h3>Player information</h3>
             <xsl:apply-templates select="g:players" mode="menu"/>
         </div>
 
@@ -58,12 +58,12 @@
                 </head>
                 <body style="background-color: {$background};">
                     <xsl:copy-of select="$header" />
-                    <h1><xsl:value-of select="g:name"/></h1>
-                    <h2>Commodities:</h2>
+                    <h2><xsl:value-of select="g:name"/></h2>
+                    <h3>Commodities:</h3>
                     <xsl:apply-templates select="g:commodities" mode="displayAll"/>
-                    <h2>Units</h2>
+                    <h3>Units</h3>
                     <xsl:apply-templates select="g:units" mode="displayAll"/>                  
-                    <h2>Buildings</h2>
+                    <h3>Buildings</h3>
                     <xsl:apply-templates select="g:buildings" mode="displayAll"/>
                 </body>
             </html>
